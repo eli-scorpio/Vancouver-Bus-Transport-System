@@ -97,7 +97,7 @@ public class TernarySearchTree {
 
     private boolean search(Node node, char[] word, int index)
     {
-        if (node == null)
+        if (node == null || word.length == 0)
             return false;
 
         if (word[index] < node.storeChar)
@@ -120,7 +120,7 @@ public class TernarySearchTree {
     }
 
     public Node findNode(Node node, char[] word, int index) {
-        if (node == null)
+        if (node == null || word.length == 0)
             return null;
 
         if (word[index] < node.storeChar)

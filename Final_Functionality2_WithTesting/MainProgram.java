@@ -1,113 +1,125 @@
 import java.io.FileNotFoundException;
 import java.util.*;
-/*
-Weclome page:
-We assume we are a Company in Canda
- */
-/*
-Weclome page:
-We assume we are a Company in Canda
- */
-/*
-In order to add user experience
-we need to add a progress bar(optional)
-sicne some query need waiting time (assumption)
-just catering for impatient user (which is important in the
-real world)
-And firsting I think we need to construct
-Starting machine like this
-It is similar like progress bar
--
---
-----
-we could use this time to read data from file
-And might use LRU algorithm to recorded user query history
-in order to query fast
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 
+ * @author Eligijus Skersonas
+ * 
+ * CLI For Vancouver Bus Transport System
  */
 
 public class MainProgram {
-    public static void main(String[] args) throws FileNotFoundException {
-        String inputFile = "stops.txt";
-        TernarySearchTree myTeneraySearchTree = new TernarySearchTree();
-        Input input = new Input(inputFile);
-        int toalRow = 8757;
-        MyHashMap dictionary = new MyHashMap();
-        ArrayList<String>dataPreprossingForRawData = new ArrayList<>();
-
-        ArrayList<FullInformationNode>dataProssingForNode = new ArrayList<>();
-        String titleInformation = input.next();
-     //   System.out.println(titleInformation);
-        //reading file;
-        for(int i = 1;i<=toalRow;i++)
-        {
-            String data = input.nextLine();
-           // System.out.println(data);
-            dataPreprossingForRawData.add(data);
-        }
-        for(int i = 0 ;i<dataPreprossingForRawData.size();i++)
-        {
-            String temp =dataPreprossingForRawData.get(i);
-            FullInformationNode tempNode = new FullInformationNode(temp);
-            dataProssingForNode.add(tempNode);
-        }
-        System.out.println("The size of"+dataProssingForNode.size());
-        /*
-         String nameRow1 = dataProssingForNode.get(8756).getBusName();
-        System.out.println(nameRow1);
-        Testing successufly for dealing with data
-         */
-        for(int i = 0 ;i<dataProssingForNode.size();i++)
-        {
-            FullInformationNode tempNode = dataProssingForNode.get(i);
-            String tempShopName = tempNode.getBusName();
-            String finalShopName= new String(tempShopName);
-            String tempFullInformation = tempNode.getFullInformation();
-            dictionary.put(finalShopName,tempFullInformation);
-        }
-
-
-
-       // System.out.println("tHE size of dic" +dictionary.size());
-        /*
-        Iterating the Hashmap to construct Teneray search tree
-         */
-        for(Map.Entry<String,String> entry : dictionary.entrySet()){
-            String tempBusName = entry.getKey();
-         //  System.out.println(tempBusName);
-            myTeneraySearchTree.insert(tempBusName);
-
-         //   System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue())
-        }
-      //  System.out.println(myTeneraySearchTree);
-        String userInput = "144";
-        HashSet<String>matchingSet = myTeneraySearchTree.prefixSearch(userInput);
-
-        for(String s : matchingSet) {
-            System.out.println(s);
-        }
-        System.out.println("The size of matching is"+matchingSet.size());
-
-
-
-        ArrayList<String>informationPrint = new ArrayList<>();
-        for (String s:matchingSet) {
-            //System.out.println(s);
-            if(dictionary.containsKey(s))
-            {
-                String fullInformation = dictionary.get(s);
-
-                StructureNode tempStructureNode = new StructureNode(fullInformation);
-                String printingInformation = tempStructureNode.getCurrentFullInformation();
-
-                informationPrint.add(printingInformation);
-            }
-        }
-
-
-
-
-
-
-
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+    	// Initialise variables
+    	boolean exit = false;
+    	boolean restart = false;
+        String userInput = "";
+        int query = -1;
+        Scanner inputScanner = new Scanner(System.in);
+        
+    	while(!exit) {
+    		// Reset variables
+    		userInput = "";
+    		query = -1;
+    		restart = false;
+    		
+	    	System.out.println("\n	       __      __                                        \n"
+	    			+ "	       \\ \\    / /                                        \n"
+	    			+ "		\\ \\  / /_ _ _ __   ___ ___  _   ___   _____ _ __ \n"
+	    			+ "		 \\ \\/ / _` | '_ \\ / __/ _ \\| | | \\ \\ / / _ \\ '__|\n"
+	    			+ "		  \\  / (_| | | | | (_| (_) | |_| |\\ V /  __/ |   \n"
+	    			+ "		   \\/ \\__,_|_| |_|\\___\\___/ \\__,_| \\_/ \\___|_| ");
+	        System.out.println("\n ____              _______                                   _      _____           _                 \n"
+	        		+ "|  _ \\            |__   __|                                 | |    / ____|         | |                \n"
+	        		+ "| |_) |_   _ ___     | |_ __ __ _ _ __  ___ _ __   ___  _ __| |_  | (___  _   _ ___| |_ ___ _ __ ___  \n"
+	        		+ "|  _ <| | | / __|    | | '__/ _` | '_ \\/ __| '_ \\ / _ \\| '__| __|  \\___ \\| | | / __| __/ _ \\ '_ ` _ \\ \n"
+	        		+ "| |_) | |_| \\__ \\    | | | | (_| | | | \\__ \\ |_) | (_) | |  | |_   ____) | |_| \\__ \\ ||  __/ | | | | |\n"
+	        		+ "|____/ \\__,_|___/    |_|_|  \\__,_|_| |_|___/ .__/ \\___/|_|   \\__| |_____/ \\__, |___/\\__\\___|_| |_| |_|\n"
+	        		+ "                                           | |                             __/ |                      \n"
+	        		+ "                                           |_|                            |___/                       \n"
+	        		+ "\n############################################################################################################\n");
+	        System.out.println(""
+	        		+ "		################\n"
+	        		+ "		# INSTRUCTIONS #\n"
+	        		+ "		################\n\n"
+	        		+ "		A message will come up to prompt you to select a query.\n"
+	        		+ "		To Select a query simply type a number from the list of\n"
+	        		+ "		queries and press ENTER.\n");
+	        System.out.println("\n\n"
+	        		+ "		###########\n"
+	        		+ "		# QUERIES #\n"
+	        		+ "		###########\n\n"
+	        		+ "		0 --> Exit the program\n"
+	        		+ "		1 --> Get a list of stops between 2 bus stops and the associated cost\n"
+	        		+ "		2 --> Search for a bus stop by its full name or first few letters\n"
+	        		+ "		3 --> Search for all trips with a given arrival time\n");
+	        System.out.print("\n\n"
+	        		+ "Select a query -> ");
+	        
+	        // Get query from System.in (Handle error if needed)
+	        if(inputScanner.hasNextInt()) {
+	        	query = inputScanner.nextInt();
+	        	inputScanner.nextLine(); // clear System.in
+	        	
+	        	switch(query) {
+	        	case 0: // exit
+	        		exit = true;
+	        		restart = true;
+	        		break;
+	        	case 1: // list bus stops en route between 2 stops
+	        		System.out.println("NOT IMPLEMENTED YET");
+	        		break;
+	        	case 2: // search bus stops
+	        		System.out.println("\nQuery 2 selected!");
+	        		System.out.print("\nSearch for a bus stop -> ");
+	        		userInput = inputScanner.nextLine().strip().toUpperCase();
+	        		Function2UserInterface myuserInterce = new Function2UserInterface(userInput);
+	        		// printing this arraylist
+	        		ArrayList<String> fullInformation = myuserInterce.getFullInformation();
+	        		System.out.println("\n			Number of matches found: " + fullInformation.size() + "\n");
+	        		for(int i = 0; i < fullInformation.size(); i++)
+	        			System.out.println(fullInformation.get(i));
+	        		break;
+	        	case 3: // search for all trips with a given arrival time
+	        		System.out.println("NOT IMPLEMENTED YET");
+	        		break;
+	        	default:
+	        		restart = true;
+	        		System.out.println("\nInvalid query selected please try again\n");
+	        		break;
+	        	}
+	        }
+	        else {
+	        	restart = true;
+	        	inputScanner.nextLine(); // clear System.in
+	        	System.out.println("\nInvalid input please type the number of one of the queries above and press ENTER\n"
+	        			+ "Example for selecting query 2: Select a query -> 2\n");
+	        	for(int i = 5; i >= 0; i--) {
+	        		System.out.print("\rTRY AGAIN IN: " + i + ((i == 1)? " SECOND":" SECONDS"));
+	        		TimeUnit.SECONDS.sleep(1);
+	        	}
+	        }
+	        
+	        while(!restart) {
+	        	System.out.println("\n"
+	        			+ "-> To select another query type 'query'\n"
+	        			+ "-> To exit type 'exit'\n");
+	        	System.out.print("Type here -> ");
+	        	userInput = inputScanner.nextLine().strip();
+	        	
+	        	if(userInput.equalsIgnoreCase("exit")) {
+	        		restart = !restart;
+	        		exit = !exit;
+	        	}
+	        	else if(userInput.equalsIgnoreCase("query"))
+	        		restart = !restart;
+	        	
+	        }
+    	}
+    	
+    	System.out.println("\n"
+    			+ "				  PROGRAM TERMINATED\n"
+    			+ "############################################################################################################");
     }
 }

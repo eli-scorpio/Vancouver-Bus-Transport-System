@@ -36,37 +36,35 @@ public class StructureNode {
     }
     public String getCurrentFullInformation()
     {
-        String fullInformation =  "------------------------------------"+"\n"+
-                "Shop Id is" + stop_id + "\n" +
-                "Shop code is'" + stop_code + "\n" +
-                "Shope Name is'" + stop_name + "\n" +
-                "Shop description'" + stop_desc + "\n" +
-                "The latitude of Shop is  " + top_lat + "\n" +
-                "The longitude of Shop is  " + stop_lon + "\n" +
-                "The zone of shop is" + zone_id + "\n" +
-                "The url of shop is" + stop_url + "\n" +
-                "The location type is " + location_type +"\n" +
-                "Parent(String) location is '" + parent_station + "\n" +
-                "\n"+
-                "------------------------------------";
+        String fullInformation =  "			------------------------------------"+"\n\n"+
+                "			Stop Name: " + stop_name + "\n" +
+                "			Description: " + stop_desc + "\n" +
+                "			Id: " + stop_id + "\n" +
+                "			Code: " + stop_code + "\n" +
+                "			Location: " + location_type +"\n" +
+                "			Latitude: " + top_lat + "\n" +
+                "			Longitude: " + stop_lon + "\n" +
+                "			Zone: " + zone_id + "\n" +
+                "			URL: " + stop_url + "\n" +
+                "			Parent(String) location: " + parent_station + "\n" +
+                "\n";
         return fullInformation;
     }
 
     @Override
     public String toString() {
         return
-                "------------------------------------"+"\n"+
-                "Shop Id is" + stop_id + "\n" +
-                "Shop code is'" + stop_code + "\n" +
-                "Shope Name is'" + stop_name + "\n" +
-                "Shop description'" + stop_desc + "\n" +
-                "The latitude of Shop is  " + top_lat + "\n" +
-                "The longitude of Shop is  " + stop_lon + "\n" +
-                "The zone of shop is" + zone_id + "\n" +
-                "The url of shop is" + stop_url + "\n" +
-                "The location type is " + location_type +"\n" +
-                "Parent(String) location is '" + parent_station + "\n" +
-                "\n"+
-        "------------------------------------";
+                "			------------------------------------"+"\n"+
+                "			Stop Name: " + stop_name + "\n" +
+                "			Description: " + stop_desc + "\n" +
+                "			Id: " + stop_id + "\n" +
+                "			Code: " + stop_code + "\n" +
+                "			Location: " + location_type +"\n" +
+                "			Latitude: " + top_lat + "\n" +
+                "			Longitude: " + stop_lon + "\n" +
+                "			Zone: " + zone_id + "\n" +
+                "			URL: " + stop_url + "\n" +
+                "			Parent(String) location: " + parent_station + "\n" +
+                "\n";
     }
 }

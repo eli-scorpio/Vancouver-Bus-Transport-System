@@ -75,7 +75,7 @@ public class Function2UserInterface {
            FullInformationNode tempNode = new FullInformationNode(temp);
            dataProssingForNode.add(tempNode);
        }
-       System.out.println("The size of"+dataProssingForNode.size());
+       //System.out.println("The size of"+dataProssingForNode.size());
         /*
          String nameRow1 = dataProssingForNode.get(8756).getBusName();
         System.out.println(nameRow1);
