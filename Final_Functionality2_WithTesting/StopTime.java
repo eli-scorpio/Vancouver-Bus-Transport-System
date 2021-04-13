@@ -37,7 +37,7 @@ public class StopTime implements Comparable<StopTime>
 	}
 	
 	/**
-     * Compare two StopTime objects based on their stopID
+     * Compare two StopTime objects based on their tripID
      * 
      * @param stopTime: stopTime to compare to
      * @return integer representing result of comparison
@@ -45,7 +45,7 @@ public class StopTime implements Comparable<StopTime>
 	@Override
     public int compareTo(StopTime stopTime)
     {
-        return Integer.valueOf(this.stopID).compareTo(Integer.valueOf(stopTime.tripID));
+        return Integer.valueOf(this.tripID).compareTo(Integer.valueOf(stopTime.tripID));
     }
 	
     /**

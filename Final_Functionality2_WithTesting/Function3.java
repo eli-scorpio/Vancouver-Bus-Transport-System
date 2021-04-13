@@ -43,7 +43,7 @@ public class Function3
 		stopTimes = stopTimesArrayList.toArray(stopTimes);
 		
 		//Sort by tripID
-		Arrays.sort(stopTimes);
+		MergeSort.sortStopTimes(stopTimes);
 	}
 	
 	/**
