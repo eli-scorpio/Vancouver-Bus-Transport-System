@@ -61,14 +61,18 @@ public class Function3
 	public void printTripsWithGivenArrivalTimes(String userInput)
 	{
 		Time userArrivalTime = new Time(userInput);
-		
+		int numberOfResults = 0;
+
 		//Print all lines with the same arrival time
 		for(int i = 0; i < stopTimes.length; i++)
 		{
 			if(stopTimes[i].arrivalTime.compareTo(userArrivalTime) == 0)
 			{
 				System.out.println(stopTimes[i].toString());
+				numberOfResults++;
 			}
 		}
+		
+		System.out.println("\n			Number of results found: " + numberOfResults + "\n");
 	}
 }

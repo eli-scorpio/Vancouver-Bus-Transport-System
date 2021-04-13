@@ -13,7 +13,6 @@ public class MainProgram {
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
     	// Initialise variables
     	boolean exit = false;
-    	boolean restart = false;
         String userInput = "";
         int query = -1;
         Scanner inputScanner = new Scanner(System.in);
@@ -22,7 +21,6 @@ public class MainProgram {
     		// Reset variables
     		userInput = "";
     		query = -1;
-    		restart = false;
     		
 	    	System.out.println("\n	       __      __                                        \n"
 	    			+ "	       \\ \\    / /                                        \n"
@@ -61,50 +59,64 @@ public class MainProgram {
 	        if(inputScanner.hasNextInt()) {
 	        	query = inputScanner.nextInt();
 	        	inputScanner.nextLine(); // clear System.in
-	        	
+        		boolean goBack = false;
+        		
 	        	switch(query) {
 	        	case 0: // exit
 	        		exit = true;
-	        		restart = true;
 	        		break;
 	        	case 1: // list bus stops en route between 2 stops
 	        		System.out.println("NOT IMPLEMENTED YET");
 	        		break;
 	        	case 2: // search bus stops
 	        		System.out.println("\nQuery 2 selected!");
-	        		System.out.print("\nSearch for a bus stop -> ");
-	        		userInput = inputScanner.nextLine().strip().toUpperCase();
-	        		Function2UserInterface myuserInterce = new Function2UserInterface(userInput);
-	        		// printing this arraylist
-	        		ArrayList<String> fullInformation = myuserInterce.getFullInformation();
-	        		System.out.println("\n			Number of matches found: " + fullInformation.size() + "\n");
-	        		for(int i = 0; i < fullInformation.size(); i++)
-	        			System.out.println(fullInformation.get(i));
+	        		while(!goBack && !exit) {
+		        		System.out.print("\nTo go back to the main page type 'back'\n"
+		        				+ "To exit the program type 'exit'\n\nSearch for a bus stop -> ");
+		        		userInput = inputScanner.nextLine().strip().toUpperCase();
+		        		if(userInput.equalsIgnoreCase("back"))
+		        			goBack = true;
+		        		else if(userInput.equalsIgnoreCase("exit"))
+		        			exit = true;
+		        		else {
+			        		Function2UserInterface myuserInterce = new Function2UserInterface(userInput);
+			        		// printing this arraylist
+			        		ArrayList<String> fullInformation = myuserInterce.getFullInformation();
+			        		System.out.println("\n			Number of matches found: " + fullInformation.size() + "\n");
+			        		for(int i = 0; i < fullInformation.size(); i++)
+			        			System.out.println(fullInformation.get(i)); 
+		        		}
+	        		}
 	        		break;
 	        	case 3: // search for all trips with a given arrival time
+        			Function3 arrivalMethod = new Function3();
 	        		System.out.println("\nQuery 3 selected");
-	        		boolean validTime = false;
-	        		while(!validTime) {
-		        		System.out.print("\nSearch for trips with arrival time -> ");
+
+	        		while(!goBack && !exit) {
+		        		System.out.print("\nTo go back to the main page type 'back'\n"
+		        				+ "To exit the program type 'exit'\n\nSearch for trips with arrival time -> ");
 		        		userInput = inputScanner.nextLine().strip();
-		        		if(Time.isValidTime(userInput)) {
-		        			Function3 arrivalMethod = new Function3();
+		        		if(Time.isValidTime(userInput)) 
 		        			arrivalMethod.printTripsWithGivenArrivalTimes(userInput);
-		        			validTime = true;
-		        		}
+		        		else if(userInput.equalsIgnoreCase("back"))
+		        			goBack = true;
+		        		else if(userInput.equalsIgnoreCase("exit"))
+		        			exit = true;
 		        		else
-			        		System.out.print("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour ");
+			        		System.out.println("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour \n");
 
 	        		}	        		
 	        		break;
 	        	default:
-	        		restart = true;
 	        		System.out.println("\nInvalid query selected please try again\n");
+		        	for(int i = 5; i >= 0; i--) {
+		        		System.out.print("\rTRY AGAIN IN: " + i + ((i == 1)? " SECOND":" SECONDS"));
+		        		TimeUnit.SECONDS.sleep(1);
+		        	}
 	        		break;
 	        	}
 	        }
 	        else {
-	        	restart = true;
 	        	inputScanner.nextLine(); // clear System.in
 	        	System.out.println("\nInvalid input please type the number of one of the queries above and press ENTER\n"
 	        			+ "Example for selecting query 2: Select a query -> 2\n");
@@ -114,21 +126,6 @@ public class MainProgram {
 	        	}
 	        }
 	        
-	        while(!restart) {
-	        	System.out.println("\n"
-	        			+ "-> To select another query type 'query'\n"
-	        			+ "-> To exit type 'exit'\n");
-	        	System.out.print("Type here -> ");
-	        	userInput = inputScanner.nextLine().strip();
-	        	
-	        	if(userInput.equalsIgnoreCase("exit")) {
-	        		restart = !restart;
-	        		exit = !exit;
-	        	}
-	        	else if(userInput.equalsIgnoreCase("query"))
-	        		restart = !restart;
-	        	
-	        }
     	}
     	
     	System.out.println("\n"
