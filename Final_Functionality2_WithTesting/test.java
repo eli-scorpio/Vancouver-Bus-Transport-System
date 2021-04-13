@@ -1,3 +1,5 @@
+import functions.Function2;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 /*
@@ -1457,11 +1459,8 @@ public class test {
     HASTIN
     HASTINGS ST FS HOLDOM AVE- WB
      */
-
-
-
         String inputString = "14";
-        Function2UserInterface myuserInterce = new Function2UserInterface(inputString);
+        Function2 myuserInterce = new Function2(inputString);
         // printing this arraylist
         ArrayList<String>fullInformaition = myuserInterce.getFullInformation();
         System.out.println("The matching information is "+fullInformaition.size());

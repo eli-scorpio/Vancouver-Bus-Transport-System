@@ -1,20 +1,23 @@
+package functions;
+
+import utility.*;
+
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 
 /*
-Usage of Function2UserInterface
+Usage of functions.Function2UserInterface
 
 
  */
-public class Function2UserInterface {
+public class Function2 {
     private String userInputText;
     private TernarySearchTree myTeneraySearchTree = new TernarySearchTree();
     HashSet<String>matchingSet;
     private MyHashMap dictionary = new MyHashMap();
-    public  Function2UserInterface(String userInputText) throws FileNotFoundException {
+    public Function2(String userInputText) throws FileNotFoundException {
 
 
        this.userInputText = userInputText;
@@ -52,8 +55,8 @@ public class Function2UserInterface {
        return fullBusList;
    }
    private void construnctionTenerySearchTree() throws FileNotFoundException {
-       String inputFile = "stops.txt";
-    //   TernarySearchTree myTeneraySearchTree = new TernarySearchTree();
+       String inputFile = "./stops.txt";
+    //   utility.TernarySearchTree myTeneraySearchTree = new utility.TernarySearchTree();
        Input input = new Input(inputFile);
        int toalRow = 8757;
 

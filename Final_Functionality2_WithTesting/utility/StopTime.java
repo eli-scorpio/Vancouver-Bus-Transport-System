@@ -1,5 +1,7 @@
+package utility;
+
 /*************************************************************************
- *  StopTime class (for CSU22012 Project).
+ *  utility.StopTime class (for CSU22012 Project).
  *
  *  @version 1.0 12/4/21
  *
@@ -19,7 +21,7 @@ public class StopTime implements Comparable<StopTime>
 	public final Double shapeDistanceTravelled;
 	
 	/**
-     * Create a StopTime object with the specified properties
+     * Create a utility.StopTime object with the specified properties
      * @param stopTimeLine: String containing comma-separated information
      */
 	public StopTime(String stopTimeLine)
@@ -37,7 +39,7 @@ public class StopTime implements Comparable<StopTime>
 	}
 	
 	/**
-     * Compare two StopTime objects based on their tripID
+     * Compare two utility.StopTime objects based on their tripID
      * 
      * @param stopTime: stopTime to compare to
      * @return integer representing result of comparison
@@ -49,17 +51,17 @@ public class StopTime implements Comparable<StopTime>
     }
 	
     /**
-     * Get String representation of StopTime
+     * Get String representation of utility.StopTime
      * 
-     * @return String containing information on StopTime entry
+     * @return String containing information on utility.StopTime entry
      */
 	@Override
     public String toString()
     {
         return ("			------------------------------------"+"\n\n"
         		+ "			Trip ID: " + tripID
-        		+ "\n			Arrival Time: " + arrivalTime
-        		+ "\n			Departure Time: " + departureTime
+        		+ "\n			Arrival utility.Time: " + arrivalTime
+        		+ "\n			Departure utility.Time: " + departureTime
         		+ "\n			Stop ID: " + stopID
         		+ "\n			Stop Sequence: " + stopSequence
         		+ "\n			Stop Headsign: " + stopHeadsign

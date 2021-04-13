@@ -1,3 +1,5 @@
+package utility;
+
 import java.util.ArrayList;
 
 public class Pair <Type1,Type2>{

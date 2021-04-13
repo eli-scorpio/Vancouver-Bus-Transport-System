@@ -1,3 +1,7 @@
+import functions.Function2;
+import functions.Function3;
+import utility.Time;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -79,7 +83,7 @@ public class MainProgram {
 		        		else if(userInput.equalsIgnoreCase("exit"))
 		        			exit = true;
 		        		else {
-			        		Function2UserInterface myuserInterce = new Function2UserInterface(userInput);
+			        		Function2 myuserInterce = new Function2(userInput);
 			        		// printing this arraylist
 			        		ArrayList<String> fullInformation = myuserInterce.getFullInformation();
 			        		System.out.println("\n			Number of matches found: " + fullInformation.size() + "\n");
@@ -96,7 +100,7 @@ public class MainProgram {
 		        		System.out.print("\nTo go back to the main page type 'back'\n"
 		        				+ "To exit the program type 'exit'\n\nSearch for trips with arrival time -> ");
 		        		userInput = inputScanner.nextLine().strip();
-		        		if(Time.isValidTime(userInput)) 
+		        		if(Time.isValidTime(userInput))
 		        			arrivalMethod.printTripsWithGivenArrivalTimes(userInput);
 		        		else if(userInput.equalsIgnoreCase("back"))
 		        			goBack = true;

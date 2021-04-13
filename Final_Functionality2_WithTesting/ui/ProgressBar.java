@@ -1,3 +1,7 @@
+/*
+A UI class which implements ProgressBar in console, used in functions.Function3
+*/
+package ui;
 
 public class ProgressBar {
 	

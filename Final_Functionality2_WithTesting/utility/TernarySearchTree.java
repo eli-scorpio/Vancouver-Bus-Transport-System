@@ -1,10 +1,13 @@
+package utility;
+/*
+A ternary tree implementation for searching for stops, used in Function2
+ */
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 
-//Define Node
+//Define utility.Node
 class Node {
     //Store for string
     char storeChar;
@@ -160,7 +163,7 @@ public class TernarySearchTree {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String inputFile = "stops.txt";
+        String inputFile = "./stops.txt";
         Input input = new Input(inputFile);
         int toalRow = 8757;
         TernarySearchTree t = new TernarySearchTree();
@@ -193,7 +196,7 @@ public class TernarySearchTree {
 
 /*
         HashMap<String,String>informationList = new HashMap<>();
-        TernarySearchTree t = new TernarySearchTree();
+        utility.TernarySearchTree t = new utility.TernarySearchTree();
         for(int )
         t.insert("152 ST FS 18 AVE,152 ST @ 18 AVE,49.035149,-122.801054");
         t.insert("152 ST FS 19 AVE,152 ST @ 19 AVE,49.036828,-122.801046");

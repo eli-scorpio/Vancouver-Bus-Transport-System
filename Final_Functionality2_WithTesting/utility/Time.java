@@ -1,5 +1,7 @@
+package utility;
+
 /*************************************************************************
- *  Time class (for CSU22012 Project).
+ *  utility.Time class (for CSU22012 Project).
  *
  *  @version 1.0 12/4/21
  *
@@ -13,7 +15,7 @@ public class Time implements Comparable<Time>
 	private final int second;
 	
 	/**
-     * Create a Time object with the specified properties
+     * Create a utility.Time object with the specified properties
      * @param time: String containing time in format hh:mm:ss
      */
 	public Time(String time)
@@ -56,7 +58,7 @@ public class Time implements Comparable<Time>
 	}
 	
 	/**
-     * Compare two Time objects
+     * Compare two utility.Time objects
      * 
      * @param time: time to compare to
      * @return integer representing result of comparison

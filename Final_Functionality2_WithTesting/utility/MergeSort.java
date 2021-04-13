@@ -1,3 +1,5 @@
+package utility;
+
 /*************************************************************************
  *  Merge Sort class (for CSU22012 Project).
  *
@@ -14,9 +16,9 @@ public class MergeSort
 	private MergeSort() {}
 	
 	/**
-     * Sort an array of StopTime objects using merge sort in ascending order.
+     * Sort an array of utility.StopTime objects using merge sort in ascending order.
      * 
-     * @param array: an unsorted array of StopTime objects.
+     * @param array: an unsorted array of utility.StopTime objects.
      */
     public static void sortStopTimes(StopTime[] array)
     {
@@ -33,7 +35,7 @@ public class MergeSort
     /**
      * Iteratively use merge sort to sort array using bottom-up merge sort.
      *
-     * @param array: an unsorted array of StopTime objects.
+     * @param array: an unsorted array of utility.StopTime objects.
      * @param aux: an auxiliary array to aid sorting
      */
     private static void sortStopTimes(StopTime[] array, StopTime[] aux)
@@ -51,7 +53,7 @@ public class MergeSort
     /**
      * Merge two sorted subarrays into larger sorted array
      *
-     * @param array: an unsorted array of StopTime objects.
+     * @param array: an unsorted array of utility.StopTime objects.
      * @param aux: an auxiliary array to aid sorting.
      * @param low: start of first subarray.
      * @param mid: end of first subarray (mid + 1 is start of second subarray).

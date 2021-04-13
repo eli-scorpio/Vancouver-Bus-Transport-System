@@ -1,6 +1,11 @@
+package functions;
+
+import ui.ProgressBar;
+import utility.*;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 /*************************************************************************
  *  Function 3 (Sorting) class (for CSU22012 Project).
  *
@@ -19,9 +24,9 @@ public class Function3
      */
 	public Function3() throws FileNotFoundException
 	{
-		Input input = new Input("stop_times.txt");
+		Input input = new Input("./stop_times.txt");
 		
-		//Read file into array of StopTime 
+		//Read file into array of utility.StopTime
 		ArrayList<StopTime> stopTimesArrayList = new ArrayList<StopTime>();		
 		String currentLine = input.nextLine(); //get rid of header line
 		int stopTimeFileSize = 1700000;

@@ -1,3 +1,7 @@
+package utility;
+/*
+A hash map class which instead of rewriting the contents of a value concatenates the old value and new value
+ */
 import java.util.*;
 public class MyHashMap extends HashMap<String,String> {
 

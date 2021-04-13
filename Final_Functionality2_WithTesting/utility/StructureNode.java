@@ -1,3 +1,5 @@
+package utility;
+
 /*
 For print information structurally
  */
@@ -13,7 +15,7 @@ public class StructureNode {
     private String stop_url;
     private String location_type;
     private String parent_station;
-    StructureNode(String preinforation)
+    public StructureNode(String preinforation)
     {
         this.preinforation = preinforation;
         String[] arr = this.preinforation.split(",");
