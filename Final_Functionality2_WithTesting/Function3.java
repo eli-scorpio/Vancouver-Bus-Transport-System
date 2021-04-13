@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 /*************************************************************************
@@ -14,21 +15,26 @@ public class Function3
 	
 	/**
      * Read in and store entries in "stop_times.txt" to enable user input for function 3
+	 * @throws FileNotFoundException 
      */
-	public Function3()
+	public Function3() throws FileNotFoundException
 	{
 		Input input = new Input("stop_times.txt");
 		
 		//Read file into array of StopTime 
 		ArrayList<StopTime> stopTimesArrayList = new ArrayList<StopTime>();		
 		String currentLine = input.nextLine(); //get rid of header line
+		int stopTimeFileSize = 1700000;
+		ProgressBar readingBar = new ProgressBar(stopTimeFileSize, "Reading file");
 		while((currentLine = input.nextLine()) != null)
 		{
+			readingBar.printBar();
 			stopTimesArrayList.add(new StopTime(currentLine));
 		}
 		
 		//Remove invalid times
 		Time maxTime = new Time("23:59:59");
+		ProgressBar removalBar = new ProgressBar(stopTimesArrayList.size(), "Removing Invalid Times");
 		for(int i = 0; i < stopTimesArrayList.size(); i++)
 		{
 			if(stopTimesArrayList.get(i).arrivalTime.compareTo(maxTime) > 0)
@@ -36,6 +42,7 @@ public class Function3
 				stopTimesArrayList.remove(i);
 				i--;
 			}
+			removalBar.printBar();
 		}
 		
 		//Convert arrayList to array

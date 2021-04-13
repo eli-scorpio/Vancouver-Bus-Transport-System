@@ -82,7 +82,20 @@ public class MainProgram {
 	        			System.out.println(fullInformation.get(i));
 	        		break;
 	        	case 3: // search for all trips with a given arrival time
-	        		System.out.println("NOT IMPLEMENTED YET");
+	        		System.out.println("\nQuery 3 selected");
+	        		boolean validTime = false;
+	        		while(!validTime) {
+		        		System.out.print("\nSearch for trips with arrival time -> ");
+		        		userInput = inputScanner.nextLine().strip();
+		        		if(Time.isValidTime(userInput)) {
+		        			Function3 arrivalMethod = new Function3();
+		        			arrivalMethod.printTripsWithGivenArrivalTimes(userInput);
+		        			validTime = true;
+		        		}
+		        		else
+			        		System.out.print("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour ");
+
+	        		}	        		
 	        		break;
 	        	default:
 	        		restart = true;

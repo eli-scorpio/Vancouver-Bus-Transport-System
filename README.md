@@ -9,4 +9,4 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
  USE SYSTEM TERMINAL NOT ECLIPSE CONSOLE
  Eclipse compiles \r (carriage return) as \n (new line) resulting in an unwanted feature
  
- Query 1 and 3 are not yet implemented
+ Query 1 not implemented yet

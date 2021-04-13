@@ -56,14 +56,15 @@ public class StopTime implements Comparable<StopTime>
 	@Override
     public String toString()
     {
-        return ("Trip ID: " + tripID
-        		+ "\nArrival Time: " + arrivalTime
-        		+ "\nDeparture Time: " + departureTime
-        		+ "\nStop ID: " + stopID
-        		+ "\nStop Sequence: " + stopSequence
-        		+ "\nStop Headsign: " + stopHeadsign
-        		+ "\nPickup Type: " + pickupType
-        		+ "\nDrop Off Type: " + dropOffType
-        		+ "\nShape Distance Travelled: " + shapeDistanceTravelled + "\n");
+        return ("			------------------------------------"+"\n\n"
+        		+ "			Trip ID: " + tripID
+        		+ "\n			Arrival Time: " + arrivalTime
+        		+ "\n			Departure Time: " + departureTime
+        		+ "\n			Stop ID: " + stopID
+        		+ "\n			Stop Sequence: " + stopSequence
+        		+ "\n			Stop Headsign: " + stopHeadsign
+        		+ "\n			Pickup Type: " + pickupType
+        		+ "\n			Drop Off Type: " + dropOffType
+        		+ "\n			Shape Distance Travelled: " + shapeDistanceTravelled + "\n");
     }
 }
