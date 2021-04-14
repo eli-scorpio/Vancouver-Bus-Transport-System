@@ -1,3 +1,5 @@
+package testProgram;
+
 import functions.Function2;
 
 import java.io.FileNotFoundException;
