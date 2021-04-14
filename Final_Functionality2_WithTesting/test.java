@@ -3,6 +3,9 @@ import functions.Function2;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 /*
+test program for Function 2
+*/
+/*
 
 The size of8757
 [------------------------------------
