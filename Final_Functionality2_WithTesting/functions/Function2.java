@@ -6,6 +6,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
+/*
+author: Mingwei Shi
+Class which implements function 1, auto completed search 
+ */
 
 /*
 Usage of functions.Function2UserInterface
