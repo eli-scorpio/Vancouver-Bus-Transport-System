@@ -2,11 +2,19 @@ import functions.Function2;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+//Test for invaild search
 /*
-test program for Function 2
-*/
-/*
+Test for invaild search
+input 32edwd2
+The size of8757
+The matching information is 0
+[]
 
+ */
+
+//Test for vaild search
+/*
+For input 14
 The size of8757
 [------------------------------------
 Shop Id is6228
@@ -1451,7 +1459,7 @@ Parent(String) location is 'null
 ------------------------------------]
 
  */
-public class test {
+public class testFunction2 {
     public static void main(String[] args) throws FileNotFoundException {
         /*
     This is the string from input
@@ -1470,6 +1478,4 @@ public class test {
         System.out.println(fullInformaition);
 
     }
-
-
 }
