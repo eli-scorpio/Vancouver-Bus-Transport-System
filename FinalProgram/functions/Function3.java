@@ -44,7 +44,8 @@ public class Function3
 		{
 				stopTimesArrayList.add(new StopTime(currentLine));
 				count++;
-				readingBar.printBar(count);
+				if(count%(noOfLines/100) == 0 || count == noOfLines)
+					readingBar.printBar(count);
 		}
 
 		//Remove invalid times
@@ -59,7 +60,8 @@ public class Function3
 				i--;
 			}
 			count++;
-			removalBar.printBar(count);
+			if(count%(noOfLines/100) == 0 || count == noOfLines)
+				removalBar.printBar(count);
 		}
 
 		//Convert arrayList to array
