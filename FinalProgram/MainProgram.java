@@ -20,14 +20,18 @@ public class MainProgram {
         String userInput = "";
         int query = -1;
         Scanner inputScanner = new Scanner(System.in);
-        
-    	while(!exit) {
+		System.out.println("INITIALISING FUNCTIONS");
+		System.out.println("Initialising Function2 (too fast for a progress bar :D)");
+		System.out.println("Initialising Function3");
+		Function3 arrivalMethod = new Function3();
+
+		while(!exit) {
     		// Reset variables
     		userInput = "";
     		query = -1;
     		
-	    	System.out.println("\n	       __      __                                        \n"
-	    			+ "	       \\ \\    / /                                        \n"
+	    	System.out.println("\n	   __      __                                        \n"
+	    			+ "	   \\ \\    / /                                        \n"
 	    			+ "		\\ \\  / /_ _ _ __   ___ ___  _   ___   _____ _ __ \n"
 	    			+ "		 \\ \\/ / _` | '_ \\ / __/ _ \\| | | \\ \\ / / _ \\ '__|\n"
 	    			+ "		  \\  / (_| | | | | (_| (_) | |_| |\\ V /  __/ |   \n"
@@ -93,7 +97,6 @@ public class MainProgram {
 	        		}
 	        		break;
 	        	case 3: // search for all trips with a given arrival time
-        			Function3 arrivalMethod = new Function3();
 	        		System.out.println("\nQuery 3 selected");
 
 	        		while(!goBack && !exit) {
