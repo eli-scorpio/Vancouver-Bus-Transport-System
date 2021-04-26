@@ -39,6 +39,34 @@ public class StopTime implements Comparable<StopTime>
 	}
 	
 	/**
+     * Checks whether a given input line is a valid StopTime input
+     * 
+     * @param stopTimeLine: String containing comma-separated information
+     * @return boolean representing whether String is valid or not
+     */	
+    public static boolean isValidLine(String stopTimeLine)
+    {
+    	boolean isValidLine = true;
+    	
+    	String[] values = stopTimeLine.split(",");
+		Time arrivalTime = new Time(values[1]);
+		Time departureTime = new Time(values[2]);
+		
+		Time maxTime = new Time("23:59:59");
+		Time minTime = new Time("00:00:00");
+		
+		if((arrivalTime.compareTo(maxTime) > 0)
+			|| (arrivalTime.compareTo(minTime) < 0)
+			|| (departureTime.compareTo(maxTime) > 0)
+			|| (departureTime.compareTo(minTime) < 0))
+		{
+			isValidLine = false;
+		}
+			
+		return isValidLine;
+    }
+	
+	/**
      * Compare two utility.StopTime objects based on their tripID
      * 
      * @param stopTime: stopTime to compare to

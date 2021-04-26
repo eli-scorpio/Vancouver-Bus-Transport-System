@@ -35,33 +35,20 @@ public class Function3
 			noOfLines++;
 		}
 
-		//Read file into array of utility.StopTime
+		//Read file into array of utility.StopTime (only valid lines)
 		ArrayList<StopTime> stopTimesArrayList = new ArrayList<StopTime>();
 		String currentLine = input.nextLine(); //get rid of header line
 		ProgressBar readingBar = new ProgressBar(noOfLines, "Reading file", System.currentTimeMillis());
 		int count = 0;
 		while((currentLine = input.nextLine()) != null)
 		{
+			if(StopTime.isValidLine(currentLine))
+			{
 				stopTimesArrayList.add(new StopTime(currentLine));
 				count++;
 				if(count%(noOfLines/100) == 0 || count == noOfLines)
 					readingBar.printBar(count);
-		}
-
-		//Remove invalid times
-		Time maxTime = new Time("23:59:59");
-		ProgressBar removalBar = new ProgressBar(stopTimesArrayList.size(), "Removing Invalid Times", System.currentTimeMillis());
-		count = 0;
-		for(int i = 0; i < stopTimesArrayList.size(); i++)
-		{
-			if(stopTimesArrayList.get(i).arrivalTime.compareTo(maxTime) > 0)
-			{
-				stopTimesArrayList.remove(i);
-				i--;
 			}
-			count++;
-			if(count%(noOfLines/100) == 0 || count == noOfLines)
-				removalBar.printBar(count);
 		}
 
 		//Convert arrayList to array
