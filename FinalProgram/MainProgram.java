@@ -1,3 +1,4 @@
+import functions.Function1;
 import functions.Function2;
 import functions.Function3;
 import utility.Time;
@@ -21,9 +22,18 @@ public class MainProgram {
         int query = -1;
         Scanner inputScanner = new Scanner(System.in);
 		System.out.println("INITIALISING FUNCTIONS");
-		System.out.println("Initialising Function2 (too fast for a progress bar :D)");
+
+		System.out.println("Initialising Function1");
+		Function1 funct1 = new Function1();
+		System.out.println("Function1 INITIALISED");
+
+		System.out.println("Initialising Function2");
+		Function2 myuserInterface = new Function2(userInput);
+		System.out.println("Function2 INITIALISED");
+
 		System.out.println("Initialising Function3");
 		Function3 arrivalMethod = new Function3();
+		System.out.println("\nFunction3 INITIALISED");
 
 		while(!exit) {
     		// Reset variables
@@ -74,7 +84,41 @@ public class MainProgram {
 	        		exit = true;
 	        		break;
 	        	case 1: // list bus stops en route between 2 stops
-	        		System.out.println("NOT IMPLEMENTED YET");
+	        		int from_id = 0;
+	        		int to_id = 0;
+					while(!goBack && !exit) {
+						System.out.print("\nTo go back to the main page type 'back'\n"
+								+ "To exit the program type 'exit'\n\n"
+								+ "Enter where you want to travel from and to!\n"
+								+ "From bus stop -> ");
+						if(inputScanner.hasNextInt()) {
+							from_id = inputScanner.nextInt();
+							System.out.print("To bus stop -> ");
+							if(inputScanner.hasNextInt()) {
+								to_id = inputScanner.nextInt();
+								System.out.println("\n" + funct1.findShortestPathById(from_id, to_id));
+								inputScanner.nextLine();
+							}
+							else {
+								userInput = inputScanner.nextLine().strip();
+								if (userInput.equalsIgnoreCase("back"))
+									goBack = true;
+								else if (userInput.equalsIgnoreCase("exit"))
+									exit = true;
+								else
+									System.out.println("\nInvalid input! Must be of form int");
+							}
+						}
+						else {
+							userInput = inputScanner.nextLine().strip();
+							if (userInput.equalsIgnoreCase("back"))
+								goBack = true;
+							else if (userInput.equalsIgnoreCase("exit"))
+								exit = true;
+							else
+								System.out.println("\nInvalid input! Must be of form int OR a valid command");
+						}
+					}
 	        		break;
 	        	case 2: // search bus stops
 	        		System.out.println("\nQuery 2 selected!");
@@ -87,9 +131,9 @@ public class MainProgram {
 		        		else if(userInput.equalsIgnoreCase("exit"))
 		        			exit = true;
 		        		else {
-			        		Function2 myuserInterce = new Function2(userInput);
+			        		myuserInterface = new Function2(userInput);
 			        		// printing this arraylist
-			        		ArrayList<String> fullInformation = myuserInterce.getFullInformation();
+			        		ArrayList<String> fullInformation = myuserInterface.getFullInformation();
 			        		System.out.println("\n			Number of matches found: " + fullInformation.size() + "\n");
 			        		for(int i = 0; i < fullInformation.size(); i++)
 			        			System.out.println(fullInformation.get(i)); 
@@ -110,7 +154,8 @@ public class MainProgram {
 		        		else if(userInput.equalsIgnoreCase("exit"))
 		        			exit = true;
 		        		else
-			        		System.out.println("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour \n");
+			        		System.out.println("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour OR "
+									+ "a valid command\n");
 
 	        		}	        		
 	        		break;

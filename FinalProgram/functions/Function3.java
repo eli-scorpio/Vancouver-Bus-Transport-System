@@ -38,17 +38,17 @@ public class Function3
 		//Read file into array of utility.StopTime (only valid lines)
 		ArrayList<StopTime> stopTimesArrayList = new ArrayList<StopTime>();
 		String currentLine = input.nextLine(); //get rid of header line
-		ProgressBar readingBar = new ProgressBar(noOfLines, "Reading file", System.currentTimeMillis());
+		ProgressBar readingBar = new ProgressBar(noOfLines, "Reading file");
 		int count = 0;
 		while((currentLine = input.nextLine()) != null)
 		{
+			count++;
+
 			if(StopTime.isValidLine(currentLine))
-			{
 				stopTimesArrayList.add(new StopTime(currentLine));
-				count++;
-				if(count%(noOfLines/100) == 0 || count == noOfLines)
-					readingBar.printBar(count);
-			}
+
+			if(count%(noOfLines/100) == 0 || count == noOfLines)
+				readingBar.printBar(count);
 		}
 
 		//Convert arrayList to array

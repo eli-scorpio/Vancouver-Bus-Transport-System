@@ -27,7 +27,7 @@ public class Graph {
 
     private void getAllStops() throws IOException {
         busNames = new HashMap<>();
-        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/stops.txt");
+        Input input = new Input("./stops.txt");
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();
@@ -44,7 +44,7 @@ public class Graph {
     }
 
     private void getDataFromStopTimesTxt() throws IOException {
-        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/stop_times.txt");
+        Input input = new Input("./stop_times.txt");
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();
@@ -92,7 +92,7 @@ public class Graph {
     }
 
     private void getDataFromTransfersTxt() throws IOException {
-        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/transfers.txt");
+        Input input = new Input("./transfers.txt");
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();
