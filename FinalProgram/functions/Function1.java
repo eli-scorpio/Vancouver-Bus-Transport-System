@@ -48,7 +48,7 @@ public class Function1
 
     }
 
-
+/* it needs to compute the assositve costs here  return two things Pair<String,Double> */
     public String findShortestPathById(int from_id, int to_id)
     {
         PriorityQueue<Node> pq = new PriorityQueue<>();
