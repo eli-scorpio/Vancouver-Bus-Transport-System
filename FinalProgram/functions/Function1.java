@@ -48,7 +48,12 @@ public class Function1
 
     }
 
-/* it needs to compute the assositve costs here  return two things Pair<String,Double> */
+
+/* it needs to compute the associative costs here  return two things Pair<String,Double> 
+Since in requirement it says that "Finding shortest paths between 2 bus stops (as input by the user), returning the list of stops en route as well as the associated “cost”."
+:) 
+
+*/
     public String findShortestPathById(int from_id, int to_id)
     {
         PriorityQueue<Node> pq = new PriorityQueue<>();
