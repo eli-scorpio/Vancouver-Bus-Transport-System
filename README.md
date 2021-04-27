@@ -11,8 +11,11 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
  
  ### Roles
  Function1 - Pavel
+ 
  Function2 - Mingwei
+ 
  Function3 - Brian
+ 
  CLI - Eligijus
   
  ### Documentation
