@@ -4,7 +4,18 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
 
 
 ### Main Program
- USE SYSTEM TERMINAL NOT ECLIPSE CONSOLE
+ DO NOT COMPILE/RUN ON ECLIPSE CONSOLE
  Eclipse compiles \r (carriage return) as \n (new line) resulting in an unwanted feature
  
- Query 1 not implemented yet
+ Recommended IDE: Intelli J
+ 
+ ### Roles
+  Function1 - Pavel
+  Function2 - Mingwei
+  Function3 - Brian
+  CLI - Eligijus
+  
+  ### Documentation
+  https://docs.google.com/document/d/16I6oQT9_GP8KFzHpfatA_eyKoUVTRpraoKrHzAlsa14/edit?usp=sharing
+  
+ 
