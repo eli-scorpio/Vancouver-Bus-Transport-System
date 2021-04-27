@@ -2,50 +2,53 @@ package utility;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
+import java.util.*;
 
 /*
 A simple graph class used for Function1 it used because
  */
 
-class BusStopEdge {
 
-    int from_id;
-    int to_id;
-    double w;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-    public BusStopEdge(double w, int from_id, int to_id) {
-        this.w = w;
-        this.from_id = from_id;
-        this.to_id = to_id;
-    }
-}
+/*
+A simple graph class used for Function1 it used because
+ */
+
 
 public class Graph {
-    HashMap<Integer, ArrayList<BusStopEdge>> adjacencyList;
-    HashMap<Integer, String> busNames;
+    public HashMap<Integer, ArrayList<BusStopEdge>> adjacencyList = new HashMap<>();
+    public HashMap<Integer, String> busNames;
+
+    public Set<Integer> vertices;
+
+    public  int V;
 
     private void getAllStops() throws IOException {
         busNames = new HashMap<>();
-        Input input = new Input("./stops.txt");
+        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/stops.txt");
 
         String currentLine = input.nextLine();
+        currentLine = input.nextLine();
 
         while (currentLine != null) {
             String[] tokens = currentLine.split(",");
             int id = Integer.parseInt(tokens[0]);
             String name = tokens[2];
-
             busNames.put(id, name);
+            adjacencyList.put(id, new ArrayList<>());
+            currentLine = input.nextLine();
         }
         input.close();
     }
 
     private void getDataFromStopTimesTxt() throws IOException {
-        Input input = new Input("./stop_times.txt");
+        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/stop_times.txt");
+
         String currentLine = input.nextLine();
+        currentLine = input.nextLine();
+
         int previousTripId = -1;
         int previousStopId = -1;
         ArrayList<BusStopEdge> current = null;
@@ -62,15 +65,15 @@ public class Graph {
                 }
 
                 current = adjacencyList.get(previousStopId);
-                current.add(new BusStopEdge(1, previousStopId, stopId));
-
-
+                BusStopEdge bse =new BusStopEdge(1, previousStopId, stopId);
+                if(!current.contains(bse))
+                {
+                    current.add(bse);
+                }
             }
-
-
             previousStopId = stopId;
             previousTripId = tripId;
-            input.nextLine();
+            currentLine = input.nextLine();
         }
 
         if (tripId == previousTripId) {
@@ -78,16 +81,22 @@ public class Graph {
                 adjacencyList.put(previousStopId, new ArrayList<>());
             }
             current = adjacencyList.get(previousStopId);
-            current.add(new BusStopEdge(1, previousStopId, stopId));
+            BusStopEdge bse =new BusStopEdge(1, previousStopId, stopId);
+            if(!current.contains(bse))
+            {
+                current.add(bse);
+            }
         }
 
         input.close();
     }
 
     private void getDataFromTransfersTxt() throws IOException {
-        Input input = new Input("./transfers.txt");
+        Input input = new Input(System.getProperty("user.dir")+"/FinalProgram/transfers.txt");
 
         String currentLine = input.nextLine();
+        currentLine = input.nextLine();
+
         ArrayList<BusStopEdge> current;
 
         while (currentLine != null) {
@@ -95,7 +104,6 @@ public class Graph {
             int from_id = Integer.parseInt(tokens[0]);
             int to_id = Integer.parseInt(tokens[1]);
             int transfer_type = Integer.parseInt(tokens[2]);
-            int min_transfer_time = Integer.parseInt(tokens[3]);
 
             if (transfer_type == 0)
             {
@@ -105,9 +113,17 @@ public class Graph {
 
                 current = adjacencyList.get(from_id);
                 current.add(new BusStopEdge(1, from_id, to_id));
+
+                if (adjacencyList.get(to_id) == null) {
+                    adjacencyList.put(to_id, new ArrayList<>());
+                }
+
+                current = adjacencyList.get(to_id);
+                current.add(new BusStopEdge(1, to_id, from_id));
             }
             else if(transfer_type == 2)
             {
+                int min_transfer_time = Integer.parseInt(tokens[3]);
                 double transferTime = min_transfer_time*1.0/100;
                 if (adjacencyList.get(from_id) == null) {
                     adjacencyList.put(from_id, new ArrayList<>());
@@ -115,19 +131,24 @@ public class Graph {
 
                 current = adjacencyList.get(from_id);
                 current.add(new BusStopEdge(transferTime, from_id, to_id));
+
+                if (adjacencyList.get(to_id) == null) {
+                    adjacencyList.put(to_id, new ArrayList<>());
+                }
+
+                current = adjacencyList.get(to_id);
+                current.add(new BusStopEdge(transferTime, to_id, from_id));
             }
+            currentLine = input.nextLine();
         }
         input.close();
     }
 
-
-
     public Graph() throws IOException {
         getAllStops();
-
-        adjacencyList = new HashMap<>();
-
         getDataFromStopTimesTxt();
         getDataFromTransfersTxt();
+        V = adjacencyList.size();
+        vertices = adjacencyList.keySet();
     }
 }
