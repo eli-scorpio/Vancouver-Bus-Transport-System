@@ -9,6 +9,10 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
  
  Recommended IDE: Intelli J
  
+ 
+ For demonstors or markers ,you need to put the input files in the same folder as MainProgram.java.
+
+ 
  ### Roles
  Function1 - Pavel
  
