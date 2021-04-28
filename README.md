@@ -5,12 +5,13 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
 
 ### Main Program
  DO NOT COMPILE/RUN ON ECLIPSE CONSOLE
- Eclipse compiles \r (carriage return) as \n (new line) resulting in an unwanted feature
+ Eclipse compiles \r (carriage return) as \n (new line) resulting in an error
  
- Recommended IDE: Intelli J
+ Recommended IDE: IntelliJ
  
  
- For demonstors or markers ,you need to put the input files in the same folder as MainProgram.java.
+ For demonstrators: You need to put the input files in the same folder as MainProgram.java. In case you are still having problems with the input files you should open 
+ your run configuration and check that the working directory is specified correctly.
 
  
  ### Roles
