@@ -80,11 +80,10 @@ Since in requirement it says that "Finding shortest paths between 2 bus stops (a
         pq.add(new Node(from_id,0));
 
         ProgressBar computingBar = new ProgressBar(V, "Computing");
-        int count = 0;
 
         while(finished.size() < V)
         {
-            if(finished.size()%(V/100) == 0 || finished.size() == V)
+            if(finished.size()%(V/100) == 0 || finished.size() == V)    //progress bar
                 computingBar.printBar(finished.size());
 
             if(!pq.isEmpty()) {
@@ -92,7 +91,7 @@ Since in requirement it says that "Finding shortest paths between 2 bus stops (a
 
                 finished.add(current.id);
 
-                if(graph.adjacencyList.containsKey(current.id)) {
+                if(graph.adjacencyList.containsKey(current.id)) { //prevents null pointer exception in case of disconnected graph
                     for (BusStopEdge b : graph.adjacencyList.get(current.id)) {
                         if (!finished.contains(b.to_id)) {
                             double w = b.w;
@@ -111,21 +110,21 @@ Since in requirement it says that "Finding shortest paths between 2 bus stops (a
             }
             else
             {
-                computingBar.printBar(V);
+                computingBar.printBar(V);       //pq empty, so we are finished
                 break;
             }
         }
         String path = "";
         int end = to_id;
 
-        if(!edgeTo.containsKey(end))
+        if(!edgeTo.containsKey(end))        //if end was not reached
             return "No path";
-        else if(from_id == to_id)
-            return Integer.toString(from_id);
+        else if(from_id == to_id)           //if from_id is equal to to_id
+            return from_id + " End and start are the same, no path needed";
 
         while(edgeTo.get(end)!=end)
         {
-            if(edgeTo.get(end) == null)
+            if(edgeTo.get(end) == null)                 // is that required?
             {
                 return "No path";
             }
@@ -133,11 +132,12 @@ Since in requirement it says that "Finding shortest paths between 2 bus stops (a
             path = end + ((path.isEmpty())?"":"->" + path);
             end = edgeTo.get(end);
 
-            if(!edgeTo.containsKey(end))
+            if(!edgeTo.containsKey(end))                //this should do
                 return "No path";
         }
 
         path = "PATH:\n" + end + "->" + path;
+        path = path + "\nCost:" + dst.get(to_id)+"\n";
         return path;
     }
 }
