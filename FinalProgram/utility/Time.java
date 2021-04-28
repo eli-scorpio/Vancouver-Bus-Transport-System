@@ -91,6 +91,8 @@ public class Time implements Comparable<Time>
 	@Override
     public String toString()
     {
-		return (hour + ":" + minute + ":" + second);
+		return (((hour <= 9) ? ("0" + hour + ":") : (hour + ":")) 
+				 + ((minute <= 9) ? ("0" + minute + ":") : (minute + ":"))
+				 + ((second <= 9) ? ("0" + second) : (second)));
     }
 }
