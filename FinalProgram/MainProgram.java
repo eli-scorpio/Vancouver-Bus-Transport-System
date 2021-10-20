@@ -155,7 +155,7 @@ public class MainProgram {
 		        			exit = true;
 		        		else
 			        		System.out.println("\nInvalid time entered! Must be of the form hh:mm:ss 24-hour OR "
-									+ "a valid command\n");
+									+ 1"a valid command\n");
 
 	        		}	        		
 	        		break;

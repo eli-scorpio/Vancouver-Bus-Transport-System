@@ -136,8 +136,8 @@ Since in requirement it says that "Finding shortest paths between 2 bus stops (a
                 return "No path";
         }
 
-        path = "PATH:\n" + end + "->" + path;
-        path = path + "\nCost:" + dst.get(to_id)+"\n";
+        path = "\nPATH:\n\n" + end + "->" + path;
+        path = path + "\n\nCost: " + dst.get(to_id)+"\n";
         return path;
     }
 }
