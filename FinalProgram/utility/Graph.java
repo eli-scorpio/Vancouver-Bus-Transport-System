@@ -1,5 +1,6 @@
 package utility;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -27,7 +28,9 @@ public class Graph {
 
     private void getAllStops() throws IOException {
         busNames = new HashMap<>();
-        Input input = new Input("./stops.txt");
+        File newFile = new File("FinalProgram/out/production/FinalProgram/stops.txt");
+        String inputFile = newFile.getPath();
+        Input input = new Input(inputFile);
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();
@@ -44,7 +47,9 @@ public class Graph {
     }
 
     private void getDataFromStopTimesTxt() throws IOException {
-        Input input = new Input("./stop_times.txt");
+        File newFile = new File("FinalProgram/out/production/FinalProgram/stop_times.txt");
+        String inputFile = newFile.getPath();
+        Input input = new Input(inputFile);
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();
@@ -92,7 +97,9 @@ public class Graph {
     }
 
     private void getDataFromTransfersTxt() throws IOException {
-        Input input = new Input("./transfers.txt");
+        File newFile = new File("FinalProgram/out/production/FinalProgram/transfers.txt");
+        String inputFile = newFile.getPath();
+        Input input = new Input(inputFile);
 
         String currentLine = input.nextLine();
         currentLine = input.nextLine();

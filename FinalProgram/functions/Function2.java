@@ -62,7 +62,6 @@ public class Function2 {
    private void construnctionTenerySearchTree() throws FileNotFoundException {
        File newFile = new File("FinalProgram/out/production/FinalProgram/stops.txt");
        String inputFile = newFile.getPath();
-       System.out.println(inputFile);
 
     //   utility.TernarySearchTree myTeneraySearchTree = new utility.TernarySearchTree();
        Input input = new Input(inputFile);
