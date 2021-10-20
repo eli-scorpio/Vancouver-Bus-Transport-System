@@ -2,6 +2,7 @@ package functions;
 
 import utility.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -59,7 +60,10 @@ public class Function2 {
        return fullBusList;
    }
    private void construnctionTenerySearchTree() throws FileNotFoundException {
-       String inputFile = "./stops.txt";
+       File newFile = new File("FinalProgram/out/production/FinalProgram/stops.txt");
+       String inputFile = newFile.getPath();
+       System.out.println(inputFile);
+
     //   utility.TernarySearchTree myTeneraySearchTree = new utility.TernarySearchTree();
        Input input = new Input(inputFile);
        int toalRow = 8757;

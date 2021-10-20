@@ -26,8 +26,10 @@ public class Function3
 	 */
 	public Function3() throws FileNotFoundException
 	{
-		Input input = new Input("./stop_times.txt");
-		Scanner sc = new Scanner(new File("./stop_times.txt"));
+		File newFile = new File("FinalProgram/out/production/FinalProgram/stop_times.txt");
+		String inputFile = newFile.getPath();
+		Input input = new Input(inputFile);
+		Scanner sc = new Scanner(newFile);
 		int noOfLines = -1; // dont count header
 
 		while(sc.hasNextLine()) {
