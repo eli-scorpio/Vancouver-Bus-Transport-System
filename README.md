@@ -17,6 +17,10 @@ Mingwei, Eligijus, Brian and Pavel - 2nd year project in Algo and Data Structure
  Function3 - Brian
  
  CLI - Eligijus
+ 
+ ### Demonstration
+ [![BUS TRANSPORT SYSTEM](https://img.youtube.com/vi/fUITyLo7-Jg/0.jpg)](https://www.youtube.com/watch?v=fUITyLo7-Jg)
+ 
 
  ### Documentation
  https://docs.google.com/document/d/16I6oQT9_GP8KFzHpfatA_eyKoUVTRpraoKrHzAlsa14/edit?usp=sharing
